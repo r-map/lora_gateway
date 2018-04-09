@@ -34,6 +34,8 @@ Maintainer: Sylvain Miermont
 #include "loragw_spi.h"
 #include "loragw_hal.h"
 
+#include <wiringPi.h>
+
 /* -------------------------------------------------------------------------- */
 /* --- PRIVATE MACROS ------------------------------------------------------- */
 
@@ -67,6 +69,15 @@ int lgw_spi_open(void **spi_target_ptr) {
     int a=0, b=0;
     int i;
 
+    // Sx1301 Reset,for a stable start-up Reset should be at high-level
+    // for 100 ns (min), once the supply voltage is stable
+    wiringPiSetup();
+    pinMode(GPIO_RESET_PIN, OUTPUT);
+    digitalWrite(GPIO_RESET_PIN, HIGH);
+    sleep(1);
+    digitalWrite(GPIO_RESET_PIN, LOW);
+    sleep(1);
+        
     /* check input variables */
     CHECK_NULL(spi_target_ptr); /* cannot be null, must point on a void pointer (*spi_target_ptr can be null) */
 
