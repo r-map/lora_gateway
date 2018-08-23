@@ -43,7 +43,8 @@ Maintainer: Sylvain Miermont
 #define LGW_SPI_MUX_TARGET_EEPROM   0x2
 #define LGW_SPI_MUX_TARGET_SX127X   0x3
 
-#define GPIO_RESET_PIN 6 // see wiringPi mapping!
+//#define GPIO_RESET_PIN 6 // IMST CH howto see wiringPi mapping!
+#define GPIO_RESET_PIN 0 // RAKWIRELESS see wiringPi mapping!
 
 /* -------------------------------------------------------------------------- */
 /* --- PUBLIC FUNCTIONS PROTOTYPES ------------------------------------------ */
